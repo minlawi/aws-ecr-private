@@ -1,4 +1,6 @@
-# Pre-requestites before pushing the image to ECR
+# Prerequisites before pushing an image to ECR
+
+The command docker pull yeasy/simple-web:latest is used to pull a Docker image from a Docker registry (in this case, Docker Hub) to your local machine. 
 
 ```
 docker pull yeasy/simple-web:latest
@@ -27,6 +29,19 @@ hashicorp/vault      1.19      ffe2f6cea17f   2 weeks ago    503MB
 hashicorp/boundary   0.19      8073fa2c1d5b   7 weeks ago    252MB
 nginx                latest    4cad75abc83d   2 months ago   192MB
 yeasy/simple-web     latest    172c78152bf6   7 years ago    679MB
+</pre>
+
+```
+docker tag yeasy/simple-web private-ecr/simple-web
+```
+
+<pre>lawi@sys76:~$ docker images
+REPOSITORY               TAG       IMAGE ID       CREATED        SIZE
+hashicorp/vault          1.19      ffe2f6cea17f   2 weeks ago    503MB
+hashicorp/boundary       0.19      8073fa2c1d5b   7 weeks ago    252MB
+nginx                    latest    4cad75abc83d   2 months ago   192MB
+private-ecr/simple-web   latest    172c78152bf6   7 years ago    679MB
+yeasy/simple-web         latest    172c78152bf6   7 years ago    679MB
 </pre>
 
 # 1. Creating an Amazon ECR private repository to store images
