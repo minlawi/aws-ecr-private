@@ -50,10 +50,16 @@ yeasy/simple-web         latest    172c78152bf6   7 years ago    679MB
 
 # 2. To authenticate Docker to an Amazon ECR private registry with get-login
 * To authenticate Docker to an Amazon ECR registry with get-login-password, run the aws ecr get-login-password command. When passing the authentication token to the docker login command, use the value AWS for the username and specify the Amazon ECR registry URI you want to authenticate to. If authenticating to multiple registries, you must repeat the command for each registry.
-<pre>
-aws ecr get-login-password --region your_region | docker login --username AWS --password-stdin your_aws_account_id.dkr.ecr.your_region.amazonaws.com
-</pre>
-```
-aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com
-```
-Important: You must replace with your region and your_aws_account_id.dkr.ecr.your_region.amazonaws.com.
+
+## Important Notes
+
+When working with AWS ECR (Elastic Container Registry), **make sure to replace the placeholders** in the following examples with your actual values:
+
+- **`your_region`**: The AWS region where your ECR repository is located (e.g., `us-east-1`, `ap-northeast-1`).
+- **`your_aws_account_id`**: Your AWS account ID, which you can find in your AWS Console.
+- **`your_region.amazonaws.com`**: The full registry URL, which will look like `your_aws_account_id.dkr.ecr.your_region.amazonaws.com`.
+
+### Example Command:
+
+```bash
+aws ecr get-login-password --region your_region --profile your_profile | docker login --username AWS --password-stdin your_aws_account_id.dkr.ecr.your_region.amazonaws.com
