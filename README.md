@@ -103,24 +103,33 @@ latest: digest: sha256:356de309052fe233ba08eb4c9ad85ab89398f31555e8777326d57307a
 
 ![image alt](https://github.com/minlawi/aws-ecr-private/blob/a60de3c7aa07bfa04ea318402bc26b773c41e75d/Screenshot%20from%202025-04-20%2011-26-10.png)
 
-### 5. Build docker compose file 🐬
-```
-services:
-  yeasy-web-1:
-    image: 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
-    hostname: yeasy-web-1
-    container_name: yeasy-web-1
-    networks:
-      - nginx-proxy-nw
+### 5. Configure the Nginx loadbalancer config file (nginx.conf)
 
-  yeasy-web-2:
-    image: 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
-    hostname: yeasy-web-2
-    container_name: yeasy-web-2
-    networks:
-      - nginx-proxy-nw
+```
+mkdir project_yeasy/
+cd project_yeasy/
+mkdir nginx_lb/
+cd nginx_lb/
+touch nginx.conf
+```
+```
+upstream yeasy_web {
+    # simple round‑robin (default)
+    server yeasy-web-1:80;
+    server yeasy-web-2:80;
+}
+
+server {
+    listen 80;
+    listen  [::]:80;
+    server_name localhost;
     
-networks:
-  nginx-proxy-nw:
-    driver: bridge
+    location / {
+        proxy_pass http://yeasy_web;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    } 
+}
 ```
