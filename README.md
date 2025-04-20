@@ -193,7 +193,7 @@ lawi@sys76:~/cnfp02/docker+vault/06/project_yeasy$ tree
 ```
 docker compose up -d
 ```
-### Expected output:
+### Expected Output:
 <pre>
 lawi@sys76:~/cnfp02/docker+vault/06/project_yeasy$ docker compose up -d
 [+] Running 4/4
@@ -202,3 +202,16 @@ lawi@sys76:~/cnfp02/docker+vault/06/project_yeasy$ docker compose up -d
  ✔ Container yeasy-web-1          Started                                                                                                                                                0.4s 
  ✔ Container nginx-reverse-proxy  Started  
 </pre>
+
+<pre>
+lawi@sys76:~/cnfp02/docker+vault/06/project_yeasy$ docker ps -a
+CONTAINER ID   IMAGE                                                                       COMMAND                  CREATED              STATUS              PORTS                                 NAMES
+2af6463224d5   nginx:latest                                                                "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, [::]:80->80/tcp   nginx-reverse-proxy
+21f5f64dfc56   571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest   "/bin/sh -c 'python …"   About a minute ago   Up About a minute   80/tcp                                yeasy-web-1
+bf47848f6d6b   571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest   "/bin/sh -c 'python …"   About a minute ago   Up About a minute   80/tcp                                yeasy-web-2
+</pre>
+
+### Expected Results When Accessing via Web Browser
+![image alt](https://github.com/minlawi/aws-ecr-private/blob/d2ff50084396333f3c577160f852ad2509f12292/Screenshot%20from%202025-04-20%2012-23-26.png)
+
+![image alt](https://github.com/minlawi/aws-ecr-private/blob/d2ff50084396333f3c577160f852ad2509f12292/Screenshot%20from%202025-04-20%2012-23-33.png)
