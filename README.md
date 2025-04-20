@@ -104,7 +104,7 @@ latest: digest: sha256:356de309052fe233ba08eb4c9ad85ab89398f31555e8777326d57307a
 ![image alt](https://github.com/minlawi/aws-ecr-private/blob/a60de3c7aa07bfa04ea318402bc26b773c41e75d/Screenshot%20from%202025-04-20%2011-26-10.png)
 
 ### 5. Configure the Nginx loadbalancer config file (nginx.conf)
-
+* 5.1 Create the project directroy
 ```
 mkdir project_yeasy/
 cd project_yeasy/
@@ -112,6 +112,7 @@ mkdir nginx_lb/
 cd nginx_lb/
 touch nginx.conf
 ```
+* 5.2. Paste this config file to nginx.conf
 ```
 upstream yeasy_web {
     # simple round‑robin (default)
