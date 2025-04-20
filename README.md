@@ -1,1 +1,1 @@
-# aws-ecr-private
+# Creating an Amazon ECR private repository to store images
