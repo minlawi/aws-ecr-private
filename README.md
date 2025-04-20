@@ -47,3 +47,6 @@ yeasy/simple-web         latest    172c78152bf6   7 years ago    679MB
 ![image alt](https://github.com/minlawi/aws-ecr-private/blob/2499f526a9b43b0aeeee7edab33703dd4d019dcd/Screenshot%20from%202025-04-20%2010-05-54.png)
 
 ![image lat](https://github.com/minlawi/aws-ecr-private/blob/280fcf865986e08fae5c9e4ee1233cac9c735398/Screenshot%20from%202025-04-20%2010-09-39.png)
+
+# 2. To authenticate Docker to an Amazon ECR private registry with get-login
+* To authenticate Docker to an Amazon ECR registry with get-login-password, run the aws ecr get-login-password command. When passing the authentication token to the docker login command, use the value AWS for the username and specify the Amazon ECR registry URI you want to authenticate to. If authenticating to multiple registries, you must repeat the command for each registry.
