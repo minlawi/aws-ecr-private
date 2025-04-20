@@ -6,7 +6,7 @@ The command docker pull yeasy/simple-web:latest is used to pull a Docker image f
 ```
 docker pull yeasy/simple-web:latest
 ```
-### Expected results:
+### Expected Output:
 <pre>latest: Pulling from yeasy/simple-web
 f2b6b4884fc8: Pull complete 
 4fb899b4df21: Pull complete 
@@ -58,7 +58,7 @@ Important: Replace your_profile, your_region and your_aws_account_id.dkr.ecr.you
 ```
 aws ecr get-login-password --region ap-southeast-1 --profile master-programmatic-admin | docker login --username AWS --password-stdin 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com
 ```
-### Expected result:
+### Expected Output:
 <pre>
 lawi@sys76:~$ aws ecr get-login-password --region ap-southeast-1 --profile master-programmatic-admin | docker login --username AWS --password-stdin 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com
 Login Succeeded
@@ -69,7 +69,7 @@ This command is used to tag a Docker image with a new name, usually to prepare i
 ```
 docker tag yeasy/simple-web:latest 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
 ```
-### Expected result:
+### Expected output result:
 <pre>lawi@sys76:~$ docker images
 REPOSITORY                                                           TAG       IMAGE ID       CREATED        SIZE
 hashicorp/vault                                                      1.19      ffe2f6cea17f   2 weeks ago    503MB
@@ -84,7 +84,7 @@ The command is used to push a Docker image to an Amazon Elastic Container Regist
 ```
 docker push 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
 ```
-### Expected result:
+### Expected Output:
 <pre>lawi@sys76:~$ docker push 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
 The push refers to repository [571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web]
 bc8c0c984b54: Pushed 
@@ -177,3 +177,28 @@ server {
     } 
 }
 ```
+### Expected Directory Structure:
+<pre>
+lawi@sys76:~/cnfp02/docker+vault/06/project_yeasy$ tree 
+.
+├── docker-compose.yaml
+└── reverse-proxy
+    └── nginx.conf
+
+1 directory, 2 files
+</pre>
+
+* 5.4. Create and start containers with docker compose command.
+  Note: Before running docker-compose up -d, make sure you are in the project_yeasy directory.
+```
+docker compose up -d
+```
+### Expected output:
+<pre>
+lawi@sys76:~/cnfp02/docker+vault/06/project_yeasy$ docker compose up -d
+[+] Running 4/4
+ ✔ Network nginx-proxy-nw         Created                                                                                                                                                0.0s 
+ ✔ Container yeasy-web-2          Started                                                                                                                                                0.4s 
+ ✔ Container yeasy-web-1          Started                                                                                                                                                0.4s 
+ ✔ Container nginx-reverse-proxy  Started  
+</pre>
