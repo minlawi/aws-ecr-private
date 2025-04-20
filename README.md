@@ -1,4 +1,6 @@
-# Prerequisites before pushing an image to ECR
+# Deploy a simple web application by using Docker container with the private Docker Registry (AWS ECR)
+
+### Prerequisites before pushing an image to ECR
 
 The command docker pull yeasy/simple-web:latest is used to pull a Docker image from a Docker registry (in this case, Docker Hub) to your local machine. 
 ```
