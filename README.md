@@ -1,4 +1,4 @@
-# Deploy a simple web application by using Docker container with the private Docker Registry (AWS ECR)
+# Deploy a Simple Web Application Using Docker with AWS ECR as the Private Docker Registry
 
 ### Prerequisites before pushing an image to ECR
 
