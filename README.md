@@ -64,6 +64,7 @@ When working with AWS ECR (Elastic Container Registry), **make sure to replace t
 ```
 aws ecr get-login-password --region your_region | docker login --username AWS --password-stdin your_aws_account_id.dkr.ecr.your_region.amazonaws.com
 ```
+Important: Replace your_region and your_aws_account_id.dkr.ecr.your_region.amazonaws.com with your actual region and AWS account ID when running the above command.
 <pre>
 aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com
 </pre>
