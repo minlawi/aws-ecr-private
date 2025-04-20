@@ -4,7 +4,7 @@ The command docker pull yeasy/simple-web:latest is used to pull a Docker image f
 ```
 docker pull yeasy/simple-web:latest
 ```
-Expected results:
+### Expected results:
 <pre>latest: Pulling from yeasy/simple-web
 f2b6b4884fc8: Pull complete 
 4fb899b4df21: Pull complete 
@@ -32,7 +32,7 @@ The command docker tag yeasy/simple-web private-ecr/simple-web is used to tag a 
 ```
 docker tag yeasy/simple-web private-ecr/simple-web
 ```
-Expected result:
+### Expected result:
 <pre>lawi@sys76:~$ docker images
 REPOSITORY               TAG       IMAGE ID       CREATED        SIZE
 hashicorp/vault          1.19      ffe2f6cea17f   2 weeks ago    503MB
@@ -68,3 +68,5 @@ Important: Replace your_profile, your_region and your_aws_account_id.dkr.ecr.you
 ```
 aws ecr get-login-password --region ap-southeast-1 --profile master-programmatic-admin | docker login --username AWS --password-stdin 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com
 ```
+### Expected result:
+![image alt](https://github.com/minlawi/aws-ecr-private/blob/bd7b2e0023cfd18287e5a2d10257e485bb382efc/Screenshot%20from%202025-04-20%2010-45-07.png)
