@@ -1,4 +1,4 @@
-# Deploy a Simple Web Application Using Docker with AWS ECR as the Private Docker Registry
+# Deploy a Simple Web Application Using 🐬 Docker with AWS ECR as the Private Docker Registry
 
 ### Prerequisites before pushing an image to ECR
 
@@ -103,5 +103,24 @@ latest: digest: sha256:356de309052fe233ba08eb4c9ad85ab89398f31555e8777326d57307a
 
 ![image alt](https://github.com/minlawi/aws-ecr-private/blob/a60de3c7aa07bfa04ea318402bc26b773c41e75d/Screenshot%20from%202025-04-20%2011-26-10.png)
 
-### 5. Build docker compose file 
+### 5. Build docker compose file 🐬
+```
+services:
+  yeasy-web-1:
+    image: 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
+    hostname: yeasy-web-1
+    container_name: yeasy-web-1
+    networks:
+      - nginx-proxy-nw
 
+  yeasy-web-2:
+    image: 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
+    hostname: yeasy-web-2
+    container_name: yeasy-web-2
+    networks:
+      - nginx-proxy-nw
+    
+networks:
+  nginx-proxy-nw:
+    driver: bridge
+```
