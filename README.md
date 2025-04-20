@@ -67,27 +67,26 @@ Login Succeeded
 ### 3. Tag Docker Image for Amazon ECR
 This command is used to tag a Docker image with a new name, usually to prepare it for pushing to a specific Amazon Elastic Container Registry (ECR).
 ```
-docker tag yeasy/simple-web:latest 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr:latest
+docker tag yeasy/simple-web:latest 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
 ```
 ### Expected result:
 <pre>lawi@sys76:~$ docker images
-REPOSITORY                                                      TAG       IMAGE ID       CREATED        SIZE
-hashicorp/vault                                                 1.19      ffe2f6cea17f   2 weeks ago    503MB
-hashicorp/boundary                                              0.19      8073fa2c1d5b   7 weeks ago    252MB
-nginx                                                           latest    4cad75abc83d   2 months ago   192MB
-571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr   latest    172c78152bf6   7 years ago    679MB
-yeasy/simple-web                                                latest    172c78152bf6   7 years ago    679MB
+REPOSITORY                                                           TAG       IMAGE ID       CREATED        SIZE
+hashicorp/vault                                                      1.19      ffe2f6cea17f   2 weeks ago    503MB
+hashicorp/boundary                                                   0.19      8073fa2c1d5b   7 weeks ago    252MB
+nginx                                                                latest    4cad75abc83d   2 months ago   192MB
+yeasy/simple-web                                                     latest    172c78152bf6   7 years ago    679MB
+571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web   latest    172c78152bf6   7 years ago    679MB
 </pre>
 
 ### 4. Push Docker Image to Amazon ECR
 The command is used to push a Docker image to an Amazon Elastic Container Registry (ECR) repository.
 ```
-docker push 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr
+docker push 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
 ```
 ### Expected result:
-<pre>lawi@sys76:~$ docker push 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr
-Using default tag: latest
-The push refers to repository [571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr]
+<pre>lawi@sys76:~$ docker push 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
+The push refers to repository [571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web]
 bc8c0c984b54: Pushed 
 a36d433a3808: Pushed 
 6bae46c6ee76: Pushed 
@@ -102,7 +101,7 @@ ff57bdb79ac8: Pushed
 latest: digest: sha256:356de309052fe233ba08eb4c9ad85ab89398f31555e8777326d57307ac913727 size: 2633
 </pre>
 
-![image alt](https://github.com/minlawi/aws-ecr-private/blob/fcd763fa930443d5d874d5791b331c2d83624d67/Screenshot%20from%202025-04-20%2011-13-51.png)
+![image alt](https://github.com/minlawi/aws-ecr-private/blob/a60de3c7aa07bfa04ea318402bc26b773c41e75d/Screenshot%20from%202025-04-20%2011-26-10.png)
 
 ### 5. Build docker compose file 
 
