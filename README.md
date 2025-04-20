@@ -103,16 +103,59 @@ latest: digest: sha256:356de309052fe233ba08eb4c9ad85ab89398f31555e8777326d57307a
 
 ![image alt](https://github.com/minlawi/aws-ecr-private/blob/a60de3c7aa07bfa04ea318402bc26b773c41e75d/Screenshot%20from%202025-04-20%2011-26-10.png)
 
-### 5. Configure the Nginx loadbalancer config file (nginx.conf)
-* 5.1 Create the project directroy
+### 5. Configure the Docker compose file and Nginx loadbalancer config file (nginx.conf)
+* 5.1. Create the project directroy
 ```
 mkdir project_yeasy/
 cd project_yeasy/
-mkdir nginx_lb/
-cd nginx_lb/
+```
+* 5.2. Build the docker-compose.yaml file
+```
+touch docker-compose.yaml
+```
+### Paste this config file to docker-compose.yaml.
+```
+services:
+  yeasy-web-1:
+    image: 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
+    hostname: yeasy-web-1
+    container_name: yeasy-web-1
+    networks:
+      - nginx-proxy-nw
+
+  yeasy-web-2:
+    image: 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-web:latest
+    hostname: yeasy-web-2
+    container_name: yeasy-web-2
+    networks:
+      - nginx-proxy-nw
+
+  nginx-reverse-proxy:
+    image: nginx:latest
+    hostname: nginx-reverse-proxy
+    container_name: nginx-reverse-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./reverse-proxy/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - nginx-proxy-nw
+    depends_on:
+      - yeasy-web-1
+      - yeasy-web-2
+    
+networks:
+  nginx-proxy-nw:
+    name: nginx-proxy-nw
+    driver: bridge
+```
+* 5.3. Create the nginx.conf file within the reverse-proxy directory in the project_yeasy folder.
+```
+mkdir reverse-proxy/
+cd reverse-proxy/
 touch nginx.conf
 ```
-* 5.2. Paste this config file to nginx.conf
+### Paste this config file to nginx.conf
 ```
 upstream yeasy_web {
     # simple round‑robin (default)
