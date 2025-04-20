@@ -30,6 +30,8 @@ nginx                latest    4cad75abc83d   2 months ago   192MB
 yeasy/simple-web     latest    172c78152bf6   7 years ago    679MB
 </pre>
 
+The command docker tag yeasy/simple-web private-ecr/simple-web is used to tag a Docker image with a new name, typically to prepare it for pushing to a private Docker registry, like Amazon ECR (Elastic Container Registry).
+
 ```
 docker tag yeasy/simple-web private-ecr/simple-web
 ```
