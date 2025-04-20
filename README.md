@@ -101,3 +101,5 @@ ff57bdb79ac8: Pushed
 8fad67424c4e: Pushed 
 latest: digest: sha256:356de309052fe233ba08eb4c9ad85ab89398f31555e8777326d57307ac913727 size: 2633
 </pre>
+
+![image alt](https://github.com/minlawi/aws-ecr-private/blob/fcd763fa930443d5d874d5791b331c2d83624d67/Screenshot%20from%202025-04-20%2011-13-51.png)
