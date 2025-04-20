@@ -69,4 +69,7 @@ Important: Replace your_profile, your_region and your_aws_account_id.dkr.ecr.you
 aws ecr get-login-password --region ap-southeast-1 --profile master-programmatic-admin | docker login --username AWS --password-stdin 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com
 ```
 ### Expected result:
-![image alt](https://github.com/minlawi/aws-ecr-private/blob/bd7b2e0023cfd18287e5a2d10257e485bb382efc/Screenshot%20from%202025-04-20%2010-45-07.png)
+<pre>
+lawi@sys76:~$ aws ecr get-login-password --region ap-southeast-1 --profile master-programmatic-admin | docker login --username AWS --password-stdin 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com
+Login Succeeded
+</pre>
