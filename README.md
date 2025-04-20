@@ -62,7 +62,8 @@ lawi@sys76:~$ aws ecr get-login-password --region ap-southeast-1 --profile maste
 Login Succeeded
 </pre>
 
-# 3. This command is used to tag a Docker image with a new name, usually to prepare it for pushing to a specific Amazon Elastic Container Registry (ECR).
+# 3. Tag Docker Image for Amazon ECR
+This command is used to tag a Docker image with a new name, usually to prepare it for pushing to a specific Amazon Elastic Container Registry (ECR).
 ```
 docker tag yeasy/simple-web:latest 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr:latest
 ```
@@ -74,9 +75,15 @@ hashicorp/boundary                                              0.19      8073fa
 nginx                                                           latest    4cad75abc83d   2 months ago   192MB
 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr   latest    172c78152bf6   7 years ago    679MB
 yeasy/simple-web                                                latest    172c78152bf6   7 years ago    679MB
+</pre>
 
-
-lawi@sys76:~$ docker push 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr
+# 4. Push Docker Image to Amazon ECR
+The command is used to push a Docker image to an Amazon Elastic Container Registry (ECR) repository.
+```
+docker push 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr
+```
+### Expected result:
+<pre>lawi@sys76:~$ docker push 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr
 Using default tag: latest
 The push refers to repository [571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr]
 bc8c0c984b54: Pushed 
