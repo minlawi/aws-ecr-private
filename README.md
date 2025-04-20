@@ -28,19 +28,7 @@ hashicorp/boundary   0.19      8073fa2c1d5b   7 weeks ago    252MB
 nginx                latest    4cad75abc83d   2 months ago   192MB
 yeasy/simple-web     latest    172c78152bf6   7 years ago    679MB
 </pre>
-The command docker tag yeasy/simple-web private-ecr/simple-web is used to tag a Docker image with a new name, typically to prepare it for pushing to a private Docker registry, like Amazon ECR (Elastic Container Registry).
-```
-docker tag yeasy/simple-web private-ecr/simple-web
-```
-### Expected result:
-<pre>lawi@sys76:~$ docker images
-REPOSITORY               TAG       IMAGE ID       CREATED        SIZE
-hashicorp/vault          1.19      ffe2f6cea17f   2 weeks ago    503MB
-hashicorp/boundary       0.19      8073fa2c1d5b   7 weeks ago    252MB
-nginx                    latest    4cad75abc83d   2 months ago   192MB
-private-ecr/simple-web   latest    172c78152bf6   7 years ago    679MB
-yeasy/simple-web         latest    172c78152bf6   7 years ago    679MB
-</pre>
+
 
 # 1. Creating an Amazon ECR private repository to store images
 
@@ -72,4 +60,35 @@ aws ecr get-login-password --region ap-southeast-1 --profile master-programmatic
 <pre>
 lawi@sys76:~$ aws ecr get-login-password --region ap-southeast-1 --profile master-programmatic-admin | docker login --username AWS --password-stdin 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com
 Login Succeeded
+</pre>
+
+# 3. This command is used to tag a Docker image with a new name, usually to prepare it for pushing to a specific Amazon Elastic Container Registry (ECR).
+```
+docker tag yeasy/simple-web:latest 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr:latest
+```
+### Expected result:
+<pre>lawi@sys76:~$ docker images
+REPOSITORY                                                      TAG       IMAGE ID       CREATED        SIZE
+hashicorp/vault                                                 1.19      ffe2f6cea17f   2 weeks ago    503MB
+hashicorp/boundary                                              0.19      8073fa2c1d5b   7 weeks ago    252MB
+nginx                                                           latest    4cad75abc83d   2 months ago   192MB
+571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr   latest    172c78152bf6   7 years ago    679MB
+yeasy/simple-web                                                latest    172c78152bf6   7 years ago    679MB
+
+
+lawi@sys76:~$ docker push 571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr
+Using default tag: latest
+The push refers to repository [571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/private-ecr]
+bc8c0c984b54: Pushed 
+a36d433a3808: Pushed 
+6bae46c6ee76: Pushed 
+6bdccf632521: Pushed 
+62d47657687c: Pushed 
+4e32c2de91a6: Pushed 
+6e1b48dc2ccc: Pushed 
+ff57bdb79ac8: Pushed 
+6e5e20cbf4a7: Pushed 
+86985c679800: Pushed 
+8fad67424c4e: Pushed 
+latest: digest: sha256:356de309052fe233ba08eb4c9ad85ab89398f31555e8777326d57307ac913727 size: 2633
 </pre>
