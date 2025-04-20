@@ -215,3 +215,17 @@ bf47848f6d6b   571600835849.dkr.ecr.ap-southeast-1.amazonaws.com/yeasy/simple-we
 ![image alt](https://github.com/minlawi/aws-ecr-private/blob/d2ff50084396333f3c577160f852ad2509f12292/Screenshot%20from%202025-04-20%2012-23-26.png)
 
 ![image alt](https://github.com/minlawi/aws-ecr-private/blob/d2ff50084396333f3c577160f852ad2509f12292/Screenshot%20from%202025-04-20%2012-23-33.png)
+
+### 6. Destroy and Cleanup ❌
+```
+docker compose down -v
+```
+### Expected result:
+<pre>
+lawi@sys76:~/cnfp02/docker+vault/06/project_yeasy$ docker compose down -v
+[+] Running 4/4
+ ✔ Container nginx-reverse-proxy  Removed                                                                                                                                                                                       0.3s 
+ ✔ Container yeasy-web-2          Removed                                                                                                                                                                                      10.2s 
+ ✔ Container yeasy-web-1          Removed                                                                                                                                                                                      10.2s 
+ ✔ Network nginx-proxy-nw         Removed                                                                                                                                                                                       0.3s 
+</pre>
