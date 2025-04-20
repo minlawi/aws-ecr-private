@@ -21,9 +21,8 @@ f05b81527a11: Pull complete
 Digest: sha256:356de309052fe233ba08eb4c9ad85ab89398f31555e8777326d57307ac913727
 Status: Downloaded newer image for yeasy/simple-web:latest
 docker.io/yeasy/simple-web:latest
-</pre>
 
-<pre>lawi@sys76:~$ docker images
+lawi@sys76:~$ docker images
 REPOSITORY           TAG       IMAGE ID       CREATED        SIZE
 hashicorp/vault      1.19      ffe2f6cea17f   2 weeks ago    503MB
 hashicorp/boundary   0.19      8073fa2c1d5b   7 weeks ago    252MB
